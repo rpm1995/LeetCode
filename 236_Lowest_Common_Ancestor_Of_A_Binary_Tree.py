@@ -11,24 +11,24 @@ class Solution:
         def helper(node):
 
             if not node:
-                return (False, "idgaf")
+                return False, None
 
             L, foundL = helper(node.left)
             R, foundR = helper(node.right)
 
             if L and R:
-                return (True, node)
+                return True, node
 
             if node != p and node != q:
                 if L:
-                    return (True, foundL)
+                    return True, foundL
 
                 if R:
-                    return (True, foundR)
+                    return True, foundR
 
             if node == p or node == q:
-                return (True, node)
+                return True, node
 
-            return (False, "idgaf")
+            return False, None
 
         return helper(root)[1]
