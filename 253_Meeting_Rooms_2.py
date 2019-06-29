@@ -8,7 +8,6 @@ class Solution:
             return 0
 
         ans = 1
-        count = 1
         intervals.sort()
         heap = [intervals[0][1]]
         heapq.heapify(heap)
