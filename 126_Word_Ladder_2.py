@@ -1,5 +1,9 @@
 from collections import deque
 
+# First do a BFS, record the minimum number of steps it takes to reach every word (and the final word)
+# Then do a DFS, exploring each branch only if the steps it takes to reach that branch is the same as the
+# recorded number of steps
+
 
 class Solution:
     def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
