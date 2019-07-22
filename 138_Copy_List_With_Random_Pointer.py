@@ -12,21 +12,22 @@ class Solution:
     def copyRandomList(self, head: 'Node') -> 'Node':
 
         dicti = {None: None}
+        ptr = head
 
-        node = head
-
-        while node:
-            dicti[node] = Node(node.val, None, None)
-            node = node.next
-
-        node = head
-        ptr = Node(0, None, None)
-        retme = ptr
-
-        while node:
-            ptr.next = dicti[node]
+        while ptr:
+            new_node = Node(ptr.val, None, None)
+            dicti[ptr] = new_node
             ptr = ptr.next
-            ptr.random = dicti[node.random]
-            node = node.next
 
-        return retme.next
+        ptr = head
+        dummy = Node(0, None, None)
+        ans_ptr = dummy
+
+        while ptr:
+            ans_ptr.next = dicti[ptr]
+            ans_ptr = ans_ptr.next
+            ans_ptr.next = dicti[ptr.next]
+            ans_ptr.random = dicti[ptr.random]
+            ptr = ptr.next
+
+        return dummy.next
