@@ -28,20 +28,21 @@ class Solution(object):
             curr_x, curr_y, depth = queue.popleft()
             ans = max(ans, depth)
 
-            if (curr_x, curr_y) in rotten:
-                continue
+            # if (curr_x, curr_y) in rotten:
+            #     continue
 
             for dx, dy in directions:
                 new_x = curr_x + dx
                 new_y = curr_y + dy
 
-                if (new_x, new_y) in rotten:
-                    continue
-                elif (new_x, new_y) in fresh:
+                # if (new_x, new_y) in rotten:
+                #     continue
+                # elif (new_x, new_y) in fresh:
+                if (new_x, new_y) in fresh:
                     fresh.remove((new_x, new_y))
                     queue.append((new_x, new_y, depth + 1))
 
-            rotten.add((curr_x, curr_y))
+            # rotten.add((curr_x, curr_y))
 
         if fresh:
             return - 1
