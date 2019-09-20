@@ -9,7 +9,7 @@ class Solution(object):
         """
 
         fresh = set()
-        rotten = set()
+        # rotten = set()
         queue = deque([])
         directions = [(-1, 0), (1, 0), (0, 1), (0, -1)]
         rows = len(grid)
