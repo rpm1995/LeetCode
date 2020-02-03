@@ -33,3 +33,29 @@ class Solution:
             # print(ans)
 
         return ans
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+
+        start = 0
+        end = 0
+        chars_in_substring = set()
+        longest_length = 0
+        n = len(s)
+
+        while end < n:
+
+            new_char = s[end]
+
+            while start < end and new_char in chars_in_substring:
+                old_char = s[start]
+                chars_in_substring.remove(old_char)
+                start += 1
+
+            chars_in_substring.add(new_char)
+            longest_length = max(longest_length, end - start + 1)
+            end += 1
+
+        return longest_length
+
