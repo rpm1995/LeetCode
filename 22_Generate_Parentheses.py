@@ -27,3 +27,24 @@ class Solution:
             return ans
 
         return helper("", [], left, right)
+
+
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+
+        ans = []
+
+        def helper(left, right, res, ans):
+
+            if left == right and left == n:
+                ans.append(res)
+                return
+
+            if left > n or right > left:
+                return
+
+            helper(left + 1, right, res + "(", ans)
+            helper(left, right + 1, res + ")", ans)
+
+        helper(0, 0, "", ans)
+        return ans
