@@ -7,7 +7,7 @@ class Solution:
 
         while index < len(height):
 
-            if not stack or height[index] < height[stack[-1]]:
+            if not stack or height[index] <= height[stack[-1]]:
                 stack.append(index)
                 index += 1
 
