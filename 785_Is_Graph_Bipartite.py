@@ -22,6 +22,4 @@ class Solution:
                         elif color[neighbour] == cur_color:
                             return False
 
-                    cur_color ^= 1
-
         return True
