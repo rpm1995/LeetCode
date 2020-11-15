@@ -47,6 +47,7 @@ class Solution:
                 arr[position] = value
                 position += 1
 
+
         for index, value in enumerate(nums):
             nums[index] = (value, index)
 
