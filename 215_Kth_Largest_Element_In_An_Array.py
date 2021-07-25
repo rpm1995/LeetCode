@@ -1,4 +1,4 @@
-import ddddddddddddddheapq
+import heapq
 
 
 class Solution:
