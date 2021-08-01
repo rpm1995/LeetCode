@@ -2,8 +2,8 @@ import heapq
 
 
 class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-
+    # def findKthLargest(self, nums: List[int], k: int) -> int:
+    #
         #         heap = []
         #         heapq.heapify(heap)
 
@@ -16,38 +16,38 @@ class Solution:
 
         #         return heapq.heappop(heap)
 
-        def partition(left, right, pivot_index):
+    def partition(self, nums, left, right):
 
-            pivot = nums[pivot_index]
+        pivot = nums[right]
+        index = left
 
-            nums[right], nums[pivot_index] = nums[pivot_index], nums[right]
+        for j in range(left, right):
 
-            store = left
+            if nums[j] < pivot:
+                nums[j], nums[index] = nums[index], nums[j]
+                index += 1
 
-            for i in range(left, right):
+        nums[index], nums[right] = nums[right], nums[index]
 
-                if nums[i] < pivot:
-                    nums[store], nums[i] = nums[i], nums[store]
-                    store += 1
+        return index
 
-            nums[right], nums[store] = nums[store], nums[right]
+    def quick_sort(self, nums, start, end):
 
-            return store
+        if start > end:
+            return num
 
-        def select(left, right, kth_smallest):
+        pivot_index = self.partition(nums, start, end)
 
-            if left == right:
-                return nums[left]
+        if pivot_index == self.k:
+            return nums[pivot_index]
 
-            pivot_index = random.randint(left, right)
+        if pivot_index < self.k:
+            return self.quick_sort(nums, pivot_index + 1, end)
 
-            pivot_index = partition(left, right, pivot_index)
+        elif pivot_index > self.k:
+            return self.quick_sort(nums, start, pivot_index - 1)
 
-            if kth_smallest == pivot_index:
-                return nums[kth_smallest]
-            elif kth_smallest > pivot_index:
-                return select(pivot_index + 1, right, kth_smallest)
-            else:
-                return select(left, pivot_index - 1, kth_smallest)
+    def findKthLargest(self, nums: List[int], k: int) -> int:
 
-        return select(0, len(nums) - 1, len(nums) - k)
+        self.k = len(nums) - k
+        return self.quick_sort(nums, 0, len(nums) - 1)
