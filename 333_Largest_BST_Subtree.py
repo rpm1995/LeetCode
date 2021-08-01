@@ -22,13 +22,13 @@ class Solution:
                 self.ans = max(self.ans, L_size + R_size + 1)
                 return min(L_min, R_min, node.val), max(L_max, R_max, node.val), L_size + R_size + 1, True
 
-            elif L_isBST:
-                self.ans = max(self.ans, L_size)
-                return min(L_min, node.val), max(L_max, node.val), L_size + 1, False
+        #             elif L_isBST:
+        #                 self.ans = max(self.ans, L_size)
+        #                 return min(L_min, node.val), max(L_max, node.val), L_size+1, False
 
-            elif R_isBST:
-                self.ans = max(self.ans, R_size)
-                return min(R_min, node.val), max(R_max, node.val), R_size + 1, False
+        #             elif R_isBST:
+        #                 self.ans = max(self.ans, R_size)
+        #                 return min(R_min, node.val), max(R_max, node.val), R_size+1, False
 
         return node.val, node.val, 0, False
 
